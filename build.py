@@ -1912,8 +1912,6 @@ def cmd_cleanall(options, args):
         files += glob.glob(wc)
     delFiles(files)
 
-    cmd_clean_vagrant(options, args)
-
 
 def cmd_buildall(options, args):
     # (re)build everything
