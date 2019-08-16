@@ -1891,8 +1891,10 @@ def cmd_clean_docker(options, args):
     if os.path.exists(d):
         shutil.rmtree(d)
 
+
 def cmd_clean_all(options, args):
     cmd_cleanall(options, args)
+
 
 def cmd_cleanall(options, args):
     # These take care of all the object, lib, shared lib files created by the
@@ -1911,6 +1913,8 @@ def cmd_cleanall(options, args):
     for wc in ['sip/cpp/*.h', 'sip/cpp/*.cpp', 'sip/cpp/*.sbf', 'sip/gen/*.sip']:
         files += glob.glob(wc)
     delFiles(files)
+
+    cmd_clean_docker(options, args)
 
 
 def cmd_buildall(options, args):
@@ -1945,7 +1949,7 @@ def cmd_sdist(options, args):
     if not os.path.exists('dist'):
         os.mkdir('dist')
 
-    # recursivly export a git archive of this repo and submodules
+    # recursively export a git archive of this repo and submodules
     def _archive_submodules(root, dest):
         msg('Exporting {}...'.format(root))
         if not os.path.exists(dest):
